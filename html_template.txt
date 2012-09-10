@@ -1,0 +1,14 @@
+POST /ad/p/1? HTTP/1.1
+Host: 165a7.v.fwmrm.net
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:2.0) Gecko/20100101 Firefox/4.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: ru-ru,ru;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Accept-Charset: windows-1251,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 115
+Connection: close
+Cookie: _uid="b026_5786513814749684263"; _pr="1347290076.1662.1137323~,1347280999.797.951554~,1347280979.1982.951554~,1347280963.561.951554~,1347280937.735.950898~,1347280931.1985.950901~,1347280917.1720.951557~,1347278240.1668.1137323~,1347277779.1441.1137323~,1347277743.1539.1136985~,1347277736.747.1136985~,"; _vr="1347290076..950900~951556~1136983~1137321~,"; _cph="1347290076.595.1.1,"; _sc="sg119471.1347290076.1347290092.3600.0.11,"; _wr="g119471"; _av="1347290077.1137320.60,"; _auv="g119471~1.1347290092.0,5.1347290077.0,14642.1347290092.0,14647.1347280999.33,23562.1347290077.0,^"
+Referer: http://static.discoverymedia.com/[[IMPORT]]/adm.fwmrm.net/p/discovery_live/AdManager.swf?logLevel=INFO&cb=641856
+Content-Type: text/xml
+Content-Length: __CONTENT_LENGTH__
+

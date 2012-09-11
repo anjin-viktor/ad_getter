@@ -7,6 +7,7 @@
 
 	function get_xml($video_url)
 	{
+		global $argv;
 		global $ad_setter_url;
 		global $xml_req_template_file;
 		global $html_req_template_file;
@@ -53,12 +54,37 @@
 		$pos = strpos($responce, "\r\n\r\n");
 		$responce = substr($responce, $pos+4);
 
-		file_put_contents("/tmp/ad_getting_tmp_file.gz", $responce);
-		system("gunzip /tmp/ad_getting_tmp_file.gz");
 
+		if(strlen($responce) == 0)
+		{
+			echo "No found ads\n";
+			exit(3);
+		}
+
+
+		file_put_contents("/tmp/ad_getting_tmp_file.gz", $responce);
+
+
+
+		exec("gzip -vt /tmp/ad_getting_tmp_file.gz");
+
+		if(shell_exec("echo $?") != 0)
+		{
+			echo "Error: downloaded file is not zip archive\n";
+			echo $argv[1]."  it is videos url?\n";
+			system("unlink /tmp/ad_getting_tmp_file.gz");
+			exit(3);
+		}		
+
+
+		if(system("gunzip /tmp/ad_getting_tmp_file.gz") != 0)
+		{
+			echo "Error: gunzip not exists\n";
+			system("unlink /tmp/ad_getting_tmp_file");
+			exit(2);
+		}
 
 		$responce = file_get_contents("/tmp/ad_getting_tmp_file");
-		system("unlink /tmp/ad_getting_tmp_file");
 
 		return $responce;
 	}
@@ -87,7 +113,14 @@
 		$url = $ad -> creatives -> creative -> creativeRenditions -> creativeRendition -> asset['url'];
 		if(strlen($url))
 		{
-			system("wget $url --output-document=$argv[2]");
+			exec("wget $url --output-document=$argv[2]");
+			$res = shell_exec("echo $?");
+			
+			if($res != 0)
+			{
+				echo "Error: wget not exists\n";
+				exit(2);
+			}
 			break;
 		}
 	}
